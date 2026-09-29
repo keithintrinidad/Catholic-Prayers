@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prayers for Catholics · Parish of the Assumption</title>
+<meta name="description" content="Everyday Catholic prayers from the Parish of the Assumption, available offline.">
+<meta name="theme-color" content="#23466F" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1826" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Prayers">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="fonts/spectral-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/cormorant-garamond-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:500;font-display:swap;src:url("fonts/cormorant-garamond-latin-500-italic.woff2") format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/cormorant-garamond-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Spectral";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/spectral-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Spectral";font-style:italic;font-weight:400;font-display:swap;src:url("fonts/spectral-latin-400-italic.woff2") format("woff2")}
+@font-face{font-family:"Spectral";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/spectral-latin-600-normal.woff2") format("woff2")}
+:root{
+  --bg:#EEF2F7; --surface:#FFFFFF; --ink:#1B2433; --muted:#5B6678;
+  --marian:#23466F; --marian-soft:#DCE6F2; --gold:#A8842F; --rubric:#9C2B2B;
+  --line:#CCD6E3; --shadow:0 1px 0 rgba(35,70,111,.08);
+  --fs:1.125rem;
+  --display:"Cormorant Garamond", "Garamond", "Times New Roman", serif;
+  --body:"Spectral", "Georgia", "Times New Roman", serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1826; --surface:#172234; --ink:#E6EBF2; --muted:#98A5B8;
+    --marian:#9DBBE0; --marian-soft:#1F3150; --gold:#D2B064; --rubric:#E08A80;
+    --line:#2A3A55; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1826; --surface:#172234; --ink:#E6EBF2; --muted:#98A5B8;
+  --marian:#9DBBE0; --marian-soft:#1F3150; --gold:#D2B064; --rubric:#E08A80;
+  --line:#2A3A55; --shadow:none;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+.wrap{max-width:40rem;margin:0 auto;padding:0 1.25rem 4rem}
+
+/* Masthead */
+header.mast{padding:2.5rem 0 1.5rem;text-align:center}
+.parish{font-family:var(--body);font-size:.95rem;color:var(--muted);font-style:italic;margin:0}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(2.6rem,10vw,3.6rem);line-height:1;margin:.35rem 0 0;color:var(--marian);letter-spacing:.01em}
+.cross{display:block;margin:1rem auto 0;width:22px;height:30px;color:var(--gold)}
+
+/* Toolbar */
+.tools{display:flex;gap:.5rem;align-items:center;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:.75rem 0;z-index:5}
+.search{flex:1;display:flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.55rem 1rem}
+.search input{flex:1;border:0;background:transparent;font:inherit;font-size:1rem;color:var(--ink);min-width:0}
+.search input:focus{outline:none}
+.search:focus-within{border-color:var(--marian)}
+.icon-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);flex:none}
+.icon-btn svg{width:20px;height:20px}
+
+/* Index */
+.group{margin-top:1.75rem}
+.group h2{font-family:var(--display);font-weight:500;font-style:italic;font-size:1.35rem;color:var(--gold);margin:0 0 .4rem;padding-bottom:.35rem;border-bottom:1px solid var(--line)}
+.plist{list-style:none;margin:0;padding:0}
+.plist li{border-bottom:1px solid var(--line)}
+.plist button{width:100%;text-align:left;display:flex;align-items:center;gap:.75rem;padding:.9rem .25rem;font-size:1.1rem}
+.plist .t{flex:1}
+.plist .star{color:var(--gold);font-size:1rem}
+.plist .chev{color:var(--muted)}
+.empty{color:var(--muted);text-align:center;padding:2rem 0;font-style:italic}
+
+/* Reader */
+.reader{position:fixed;inset:0;background:var(--bg);z-index:20;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .28s ease;visibility:hidden}
+.reader.open{transform:none;visibility:visible}
+.rbar{display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;padding-top:calc(.6rem + env(safe-area-inset-top,0px));border-bottom:1px solid var(--line);background:var(--bg)}
+.rbar .spacer{flex:1}
+.rbar .size{display:flex;border:1px solid var(--line);border-radius:999px;background:var(--surface);overflow:hidden}
+.rbar .size button{padding:0 .85rem;height:40px;font-family:var(--display);font-size:1.1rem}
+.rbar .size button+button{border-left:1px solid var(--line)}
+.rbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.rbody .wrap{padding-top:2rem;padding-bottom:3rem}
+.rgroup{font-style:italic;color:var(--gold);margin:0;font-size:1rem}
+.rtitle{font-family:var(--display);font-weight:600;font-size:clamp(2.1rem,8vw,2.8rem);line-height:1.1;margin:.2rem 0 1.5rem;color:var(--marian)}
+.prayer{font-size:var(--fs);line-height:1.75}
+.prayer p{margin:0 0 1em}
+.rub{color:var(--rubric);font-style:italic;font-size:.88em}
+.lp b{color:var(--marian);font-weight:600}
+.vr{display:grid;grid-template-columns:1.6em 1fr;gap:.25em;margin:0 0 .9em}
+.vr .m{color:var(--rubric);font-weight:600;font-family:var(--display);font-size:1.1em;line-height:1.55}
+.vr.r .txt{font-weight:600}
+.hm{margin:0 0 1.1em}
+.hm button{color:var(--marian);font-style:italic;font-weight:600;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px;padding:0}
+.hm .full{display:none;margin-top:.5em;padding-left:1em;border-left:2px solid var(--gold);color:var(--ink)}
+.hm.open .full{display:block}
+.note{font-size:.9rem;color:var(--muted);font-style:italic;margin-top:2rem}
+.amen{text-align:center;color:var(--gold);margin:2rem 0 0;font-family:var(--display);font-size:1.4rem}
+.rnav{display:flex;gap:.75rem;padding:.75rem 1rem;padding-bottom:calc(.75rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--bg)}
+.rnav button{flex:1;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.7rem 1rem;font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rnav button:disabled{opacity:.4;cursor:default}
+.fav.on svg{fill:var(--gold);stroke:var(--gold)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;font-style:italic}
+@media (prefers-reduced-motion: reduce){.reader{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="mast">
+    <p class="parish">Parish of the Assumption</p>
+    <h1>Prayers for Catholics</h1>
+    <svg class="cross" viewBox="0 0 22 30" aria-hidden="true"><path d="M9 0h4v8h9v4h-9v18H9V12H0V8h9z" fill="currentColor"/></svg>
+  </header>
+
+  <div class="tools">
+    <label class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Find a prayer or phrase" aria-label="Find a prayer or phrase" autocomplete="off">
+    </label>
+    <button class="icon-btn" id="themeBtn" aria-label="Switch light or dark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+
+  <main id="index"></main>
+  <footer>Tap a prayer to open it. Tap the star to keep it at the top.</footer>
+</div>
+
+<section class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="rtitle">
+  <div class="rbar">
+    <button class="icon-btn" id="closeBtn" aria-label="Back to all prayers">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <span class="spacer"></span>
+    <div class="size" role="group" aria-label="Text size">
+      <button id="smaller" aria-label="Smaller text">A−</button>
+      <button id="larger" aria-label="Larger text">A+</button>
+    </div>
+    <button class="icon-btn fav" id="favBtn" aria-label="Star this prayer" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></svg>
+    </button>
+  </div>
+  <div class="rbody" id="rbody">
+    <div class="wrap">
+      <p class="rgroup" id="rgroup"></p>
+      <h2 class="rtitle" id="rtitle"></h2>
+      <div class="prayer" id="rtext"></div>
+    </div>
+  </div>
+  <nav class="rnav">
+    <button id="prevBtn"></button>
+    <button id="nextBtn"></button>
+  </nav>
+</section>
+
+<script>
+/* Content from "Prayers for Catholics" — Parish of the Assumption.
+   Markup: {Bow} = rubric, blocks: p (paragraph), lp (Let us pray), v/r (versicle/response), hm (Hail Mary expander) */
+const HAIL_MARY = "Hail Mary, full of grace, the Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.";
+
+const PRAYERS = [
+  {id:"sign-of-the-cross", g:"Everyday prayers", t:"Sign of the Cross", b:[
+    ["p","In the name of the Father, and of the Son, and of the Holy Spirit. Amen."]]},
+  {id:"lords-prayer", g:"Everyday prayers", t:"The Lord’s Prayer", b:[
+    ["p","Our Father, who art in heaven, hallowed be thy name; thy kingdom come; thy will be done on earth as it is in heaven."],
+    ["p","Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us."],
+    ["p","And lead us not into temptation, but deliver us from evil. Amen."]]},
+  {id:"hail-mary", g:"Everyday prayers", t:"Hail Mary", b:[
+    ["p","Hail Mary, full of grace, the Lord is with thee."],
+    ["p","Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus."],
+    ["p","Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen."]]},
+  {id:"glory-be", g:"Everyday prayers", t:"Glory Be", b:[
+    ["p","Glory be to the Father, and to the Son, and to the Holy Spirit; as it was in the beginning, is now, and ever shall be, world without end. Amen."]]},
+
+  {id:"morning-offering", g:"Everyday prayers", t:"Morning Offering", b:[
+    ["p","O Jesus, through the Immaculate Heart of Mary, I offer You my prayers, works, joys and sufferings of this day, in union with the Holy Sacrifice of the Mass throughout the world."],
+    ["p","I offer them for all the intentions of Your Sacred Heart: the salvation of souls, reparation for sin, the reunion of all Christians, and in particular for the intentions of the Holy Father this month. Amen."]]},
+  {id:"guardian-angel", g:"Everyday prayers", t:"Guardian Angel Prayer", b:[
+    ["p","Angel of God, my guardian dear,<br>to whom God’s love commits me here,<br>ever this day be at my side,<br>to light and guard, to rule and guide. Amen."]]},
+  {id:"apostles-creed", g:"The Creeds", t:"The Apostles’ Creed", b:[
+    ["p","I believe in God, the Father Almighty, Creator of heaven and earth;"],
+    ["p","and in Jesus Christ, His only Son, our Lord, {Bow} who was conceived by the Holy Spirit, born of the Virgin Mary, {Return} suffered under Pontius Pilate, was crucified, died, and was buried."],
+    ["p","He descended to the dead. On the third day He rose again. He ascended into heaven and is seated at the right hand of the Father. He will come again to judge the living and the dead."],
+    ["p","I believe in the Holy Spirit, the holy Catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen."]]},
+  {id:"nicene-creed", g:"The Creeds", t:"The Nicene Creed", b:[
+    ["p","I believe in one God, the Father Almighty, maker of heaven and earth, of all things visible and invisible."],
+    ["p","I believe in one Lord Jesus Christ, the Only Begotten Son of God, born of the Father before all ages. God from God, Light from Light, true God from true God, begotten, not made, consubstantial with the Father; through Him all things were made."],
+    ["p","For us men and for our salvation He came down from heaven, {Bow} and by the Holy Spirit was incarnate of the Virgin Mary, and became man. {Return}"],
+    ["p","For our sake He was crucified under Pontius Pilate; He suffered death and was buried, and rose again on the third day in accordance with the Scriptures."],
+    ["p","He ascended into heaven and is seated at the right hand of the Father. He will come again in glory to judge the living and the dead, and His kingdom will have no end."],
+    ["p","I believe in the Holy Spirit, the Lord, the giver of life, who proceeds from the Father and the Son, who with the Father and the Son is adored and glorified, who has spoken through the prophets."],
+    ["p","I believe in one, holy, catholic and apostolic Church."],
+    ["p","I confess one baptism for the forgiveness of sins, and I look forward to the resurrection of the dead and the life of the world to come. Amen."]]},
+
+  {id:"confiteor", g:"Sorrow and forgiveness", t:"The Confiteor", b:[
+    ["p","I confess to almighty God and to you, my brothers and sisters, that I have greatly sinned, in my thoughts and in my words, in what I have done and in what I have failed to do;"],
+    ["p","{Strike the breast at each admission of fault} through my fault, through my fault, through my most grievous fault;"],
+    ["p","therefore I ask blessed Mary ever-Virgin, all the Angels and Saints, and you, my brothers and sisters, to pray for me to the Lord our God."]]},
+  {id:"act-of-contrition", g:"Sorrow and forgiveness", t:"Act of Contrition", b:[
+    ["p","O my God, I am heartily sorry for having offended Thee, and I detest all my sins because of Thy just punishments, but most of all because they offend Thee, my God, who art all good and deserving of all my love."],
+    ["p","I firmly resolve, with the help of Thy grace, to sin no more and to avoid the near occasions of sin. Amen."]]},
+
+  {id:"act-of-faith", g:"Faith, hope and love", t:"Act of Faith", b:[
+    ["p","O my God, I firmly believe that You are one God in three divine Persons: Father, Son, and Holy Spirit. I believe that Your divine Son became man and died for our sins, and that He will come to judge the living and the dead."],
+    ["p","I believe these and all the truths which the Holy Catholic Church teaches, because You have revealed them, who can neither deceive nor be deceived. Amen."]]},
+  {id:"act-of-hope", g:"Faith, hope and love", t:"Act of Hope", b:[
+    ["p","O my God, relying on Your infinite goodness and promises, I hope to obtain pardon of my sins, the help of Your grace, and life everlasting, through the merits of Jesus Christ, my Lord and Redeemer. Amen."]]},
+  {id:"act-of-love", g:"Faith, hope and love", t:"Act of Love", b:[
+    ["p","O my God, I love You above all things, with my whole heart and soul, because You are all good and worthy of all love."],
+    ["p","I love my neighbour as myself for the love of You. I forgive all who have injured me, and I ask pardon of all whom I have injured. Amen."]]},
+  {id:"angelus", g:"Prayers to Our Lady", t:"The Angelus", b:[
+    ["v","The Angel of the Lord declared unto Mary,"],["r","And she conceived of the Holy Spirit."],["hm"],
+    ["v","Behold the handmaid of the Lord."],["r","Be it done unto me according to thy word."],["hm"],
+    ["v","And the Word was made flesh,"],["r","And dwelt amongst us."],["hm"],
+    ["v","Pray for us, O holy Mother of God,"],["r","That we may be made worthy of the promises of Christ."],
+    ["lp","Pour forth, we beseech Thee, O Lord, Thy grace into our hearts, that we, to whom the incarnation of Christ, Thy Son, was made known by the message of an angel, may by His passion and cross be brought to the glory of His resurrection, through the same Christ our Lord. Amen."]]},
+  {id:"salve-regina", g:"Prayers to Our Lady", t:"Salve Regina", b:[
+    ["p","Hail, Holy Queen, Mother of Mercy, hail our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve; to thee do we send up our sighs, mourning and weeping in this valley of tears."],
+    ["p","Turn, then, O most gracious advocate, thine eyes of mercy toward us; and after this our exile, show unto us the blessed fruit of thy womb, Jesus."],
+    ["p","O clement, O loving, O sweet Virgin Mary."],
+    ["v","Pray for us, O Holy Mother of God,"],["r","That we may be made worthy of the promises of Christ."],
+    ["lp","O God, whose only begotten Son, by His life, death and resurrection, has purchased for us the rewards of eternal life; grant, we beseech Thee, that meditating on these mysteries of the most holy Rosary of the Blessed Virgin Mary, we may both imitate what they contain and obtain what they promise, through the same Christ our Lord. Amen."]]},
+  {id:"memorare", g:"Prayers to Our Lady", t:"The Memorare", b:[
+    ["p","Remember, O most gracious Virgin Mary, that never was it known that anyone who fled to thy protection, implored thy help, or sought thine intercession was left unaided."],
+    ["p","Inspired by this confidence, I fly unto thee, O Virgin of virgins, my mother; to thee do I come, before thee I stand, sinful and sorrowful."],
+    ["p","O Mother of the Word Incarnate, despise not my petitions, but in thy mercy hear and answer me. Amen."]]},
+
+  {id:"regina-caeli", g:"Prayers to Our Lady", t:"Regina Caeli", note:"Prayed in place of the Angelus from Easter Sunday to Pentecost.", b:[
+    ["v","Queen of Heaven, rejoice, alleluia."],["r","For He whom you did merit to bear, alleluia,"],
+    ["v","Has risen, as He said, alleluia."],["r","Pray for us to God, alleluia."],
+    ["v","Rejoice and be glad, O Virgin Mary, alleluia,"],["r","For the Lord has truly risen, alleluia."],
+    ["lp","O God, who gave joy to the world through the resurrection of Thy Son, our Lord Jesus Christ, grant, we beseech Thee, that through the intercession of the Virgin Mary, His Mother, we may obtain the joys of everlasting life, through the same Christ our Lord. Amen."]]},
+  {id:"fatima-prayer", g:"Prayers to Our Lady", t:"Fatima Prayer", note:"Said after the Glory Be at the end of each decade of the Rosary.", b:[
+    ["p","O my Jesus, forgive us our sins, save us from the fires of hell; lead all souls to heaven, especially those in most need of Thy mercy. Amen."]]},
+  {id:"holy-spirit", g:"Devotions", t:"Prayer to the Holy Spirit", b:[
+    ["p","Come, Holy Spirit, fill the hearts of your faithful, and kindle in them the fire of your love."],
+    ["v","Send forth your Spirit and they shall be created,"],["r","And you shall renew the face of the earth."]]},
+  {id:"anima-christi", g:"Devotions", t:"Anima Christi", b:[
+    ["p","Soul of Christ, sanctify me.<br>Body of Christ, save me.<br>Blood of Christ, inebriate me.<br>Water from the side of Christ, wash me.<br>Passion of Christ, strengthen me.<br>O good Jesus, hear me.<br>Within Your wounds hide me.<br>Permit me not to be separated from You.<br>From the wicked foe defend me.<br>At the hour of my death call me, and bid me come to You, that with Your saints I may praise You for ever and ever. Amen."]]},
+  {id:"divine-praises", g:"Devotions", t:"The Divine Praises", note:"Traditionally prayed at Benediction, each line said by the priest and repeated by the people.", b:[
+    ["p","Blessed be God.<br>Blessed be His holy Name.<br>Blessed be Jesus Christ, true God and true man.<br>Blessed be the name of Jesus.<br>Blessed be His most Sacred Heart.<br>Blessed be His most Precious Blood.<br>Blessed be Jesus in the most holy Sacrament of the altar.<br>Blessed be the Holy Spirit, the Paraclete.<br>Blessed be the great Mother of God, Mary most holy.<br>Blessed be her holy and Immaculate Conception.<br>Blessed be her glorious Assumption.<br>Blessed be the name of Mary, Virgin and Mother.<br>Blessed be Saint Joseph, her most chaste spouse.<br>Blessed be God in His angels and in His saints."]]},
+  {id:"st-michael", g:"Devotions", t:"Prayer to St. Michael the Archangel", b:[
+    ["p","St. Michael the Archangel, defend us in battle. Be our protection against the wickedness and snares of the devil."],
+    ["p","May God rebuke him, we humbly pray; and do thou, O Prince of the heavenly hosts, by the power of God, cast into hell Satan and all the evil spirits who prowl about the world seeking the ruin of souls. Amen."]]},
+  {id:"grace-before", g:"For particular times", t:"Grace before Meals", b:[
+    ["p","Bless us, O Lord, and these Thy gifts, which we are about to receive from Thy bounty, through Christ our Lord. Amen."]]},
+  {id:"grace-after", g:"For particular times", t:"Grace after Meals", b:[
+    ["p","We give Thee thanks, almighty God, for all Thy benefits, who livest and reignest for ever and ever. Amen."],
+    ["p","May the souls of the faithful departed, through the mercy of God, rest in peace. Amen."]]},
+  {id:"eternal-rest", g:"For particular times", t:"Eternal Rest", note:"Prayed for the faithful departed, especially during November.", b:[
+    ["v","Eternal rest grant unto them, O Lord,"],["r","And let perpetual light shine upon them."],
+    ["v","May they rest in peace."],["r","Amen."],
+    ["v","May their souls and the souls of all the faithful departed, through the mercy of God, rest in peace."],["r","Amen."]]},
+  {id:"spiritual-communion", g:"For particular times", t:"Act of Spiritual Communion", note:"By St. Alphonsus Liguori. For when you are at Mass but not receiving Holy Communion.", b:[
+    ["p","My Jesus, I believe that You are present in the Most Holy Sacrament. I love You above all things, and I desire to receive You into my soul."],
+    ["p","Since I cannot at this moment receive You sacramentally, come at least spiritually into my heart. I embrace You as if You were already there, and unite myself wholly to You. Never permit me to be separated from You. Amen."]]}
+];
+
+const $ = s => document.querySelector(s);
+const store = {
+  get(k,d){try{const v=localStorage.getItem("pfc:"+k);return v?JSON.parse(v):d}catch(e){return d}},
+  set(k,v){try{localStorage.setItem("pfc:"+k,JSON.stringify(v))}catch(e){}}
+};
+let favs = store.get("favs",[]);
+let fs = store.get("fs",1.125);
+let current = -1;
+let order = PRAYERS.map((_,i)=>i);
+
+const theme = store.get("theme",null);
+if(theme) document.documentElement.dataset.theme = theme;
+document.documentElement.style.setProperty("--fs", fs+"rem");
+
+const plain = p => (p.t+" "+p.b.map(b=>b[1]||"").join(" ")).replace(/<br>|\{[^}]*\}/g," ").toLowerCase();
+const rich = s => s.replace(/\{([^}]*)\}/g,'<span class="rub">($1)</span>');
+
+function renderIndex(){
+  const q = $("#q").value.trim().toLowerCase();
+  const match = PRAYERS.map((p,i)=>i).filter(i=>!q || plain(PRAYERS[i]).includes(q));
+  const groups = [];
+  const starred = match.filter(i=>favs.includes(PRAYERS[i].id));
+  if(starred.length && !q) groups.push(["Starred", starred]);
+  for(const i of match){
+    const g = PRAYERS[i].g;
+    let grp = groups.find(x=>x[0]===g);
+    if(!grp){grp=[g,[]];groups.push(grp)}
+    grp[1].push(i);
+  }
+  order = groups.flatMap(g=>g[0]==="Starred"?[]:g[1]);
+  if(!order.length) order = starred;
+  $("#index").innerHTML = groups.length ? groups.map(([g,ids])=>`
+    <section class="group"><h2>${g}</h2><ul class="plist">
+      ${ids.map(i=>`<li><button data-i="${i}">
+        <span class="t">${PRAYERS[i].t}</span>
+        ${favs.includes(PRAYERS[i].id)?'<span class="star" aria-label="Starred">★</span>':''}
+        <span class="chev" aria-hidden="true">›</span></button></li>`).join("")}
+    </ul></section>`).join("")
+    : `<p class="empty">No prayer contains “${$("#q").value}”. Try a shorter word.</p>`;
+}
+
+function blockHTML(b){
+  switch(b[0]){
+    case "p": return `<p>${rich(b[1])}</p>`;
+    case "v": return `<div class="vr v"><span class="m" aria-label="Versicle">℣.</span><span class="txt">${b[1]}</span></div>`;
+    case "r": return `<div class="vr r"><span class="m" aria-label="Response">℟.</span><span class="txt">${b[1]}</span></div>`;
+    case "hm": return `<div class="hm"><button aria-expanded="false">Hail Mary…</button><div class="full">${HAIL_MARY}</div></div>`;
+    case "lp": return `<p class="lp"><b>Let us pray.</b> ${b[1]}</p>`;
+  }
+}
+
+function openPrayer(i){
+  current = i;
+  const p = PRAYERS[i];
+  $("#rgroup").textContent = p.g;
+  $("#rtitle").textContent = p.t;
+  $("#rtext").innerHTML = p.b.map(blockHTML).join("") + (p.note?`<p class="note">${p.note}</p>`:"") + '<p class="amen" aria-hidden="true">✠</p>';
+  const on = favs.includes(p.id);
+  $("#favBtn").classList.toggle("on",on);
+  $("#favBtn").setAttribute("aria-pressed",on);
+  $("#favBtn").setAttribute("aria-label", on?"Remove star":"Star this prayer");
+  const pos = order.indexOf(i);
+  const prev = order[pos-1], next = order[pos+1];
+  $("#prevBtn").disabled = prev===undefined;
+  $("#nextBtn").disabled = next===undefined;
+  $("#prevBtn").textContent = prev===undefined ? "‹ Previous" : "‹ "+PRAYERS[prev].t;
+  $("#nextBtn").textContent = next===undefined ? "Next ›" : PRAYERS[next].t+" ›";
+  $("#prevBtn").dataset.i = prev ?? ""; $("#nextBtn").dataset.i = next ?? "";
+  $("#rbody").scrollTop = 0;
+  if(!$("#reader").classList.contains("open")){
+    $("#reader").classList.add("open");
+    document.body.style.overflow="hidden";
+    history.pushState({p:p.id},"","#"+p.id);
+  } else {
+    history.replaceState({p:p.id},"","#"+p.id);
+  }
+  $("#closeBtn").focus({preventScroll:true});
+}
+function closeReader(fromPop){
+  $("#reader").classList.remove("open");
+  document.body.style.overflow="";
+  if(!fromPop && location.hash) history.back();
+  const btn = document.querySelector(`#index button[data-i="${current}"]`);
+  if(btn) btn.focus({preventScroll:true});
+}
+
+$("#index").addEventListener("click",e=>{const b=e.target.closest("button[data-i]"); if(b) openPrayer(+b.dataset.i)});
+$("#q").addEventListener("input",renderIndex);
+$("#closeBtn").onclick=()=>closeReader(false);
+$("#prevBtn").onclick=e=>{if(e.currentTarget.dataset.i!=="") openPrayer(+e.currentTarget.dataset.i)};
+$("#nextBtn").onclick=e=>{if(e.currentTarget.dataset.i!=="") openPrayer(+e.currentTarget.dataset.i)};
+$("#rtext").addEventListener("click",e=>{
+  const b=e.target.closest(".hm button"); if(!b) return;
+  const h=b.parentElement; h.classList.toggle("open"); b.setAttribute("aria-expanded",h.classList.contains("open"));
+});
+function setFs(v){fs=Math.min(1.75,Math.max(.95,v));document.documentElement.style.setProperty("--fs",fs+"rem");store.set("fs",fs)}
+$("#smaller").onclick=()=>setFs(fs-.125);
+$("#larger").onclick=()=>setFs(fs+.125);
+$("#favBtn").onclick=()=>{
+  const id=PRAYERS[current].id;
+  favs = favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];
+  store.set("favs",favs); renderIndex(); openPrayer(current);
+};
+$("#themeBtn").onclick=()=>{
+  const dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  const t = dark?"light":"dark"; document.documentElement.dataset.theme=t; store.set("theme",t);
+};
+document.addEventListener("keydown",e=>{
+  if(!$("#reader").classList.contains("open")) return;
+  if(e.key==="Escape") closeReader(false);
+  if(e.key==="ArrowRight") $("#nextBtn").click();
+  if(e.key==="ArrowLeft") $("#prevBtn").click();
+});
+window.addEventListener("popstate",()=>{ if($("#reader").classList.contains("open")) closeReader(true) });
+
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+
+renderIndex();
+const start = PRAYERS.findIndex(p=>"#"+p.id===location.hash);
+if(start>-1){history.replaceState(null,"",location.pathname);openPrayer(start)}
+</script>
+</body>
+</html>
