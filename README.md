@@ -1,6 +1,16 @@
 # Prayers for Catholics – PWA
 
-Parish of the Assumption prayer app. Static files only: no build step, no server code.
+A prayer companion based on the *Prayers for Catholics* leaflet of the Parish of the Assumption. It holds 26 prayers, works offline once installed, and runs entirely in the browser as static files: no build step, no server code.
+
+## About this app
+
+This app was built by **Claude**, an AI model created by **Anthropic**, using material provided to it and under the guidance of **Keith Francis** ([keithintrinidad](https://github.com/keithintrinidad)).
+
+- **Source material.** The starting point was the parish's *Prayers for Catholics* leaflet, supplied by Keith Francis. All 15 of its prayers are included, with small corrections, and the Angelus has its standard closing versicle restored.
+- **Additions.** Eleven traditional prayers were added at his direction: the Morning Offering, Guardian Angel Prayer, Acts of Faith, Hope and Love, Regina Caeli, Fatima Prayer, Prayer to St. Michael, Graces before and after Meals, Eternal Rest, and the Act of Spiritual Communion.
+- **Design and build.** Keith Francis directed the app's content, features, and packaging through conversation with Claude, but did not write the code directly.
+
+It is a companion to the [Rosary Helper](https://github.com/keithintrinidad/Rosary-Helper) app, made the same way.
 
 ## What's in the package
 
@@ -11,6 +21,7 @@ Parish of the Assumption prayer app. Static files only: no build step, no server
 | `sw.js` | Service worker: caches everything so the app works offline |
 | `icons/` | App icons (192, 512, maskable 512, Apple touch, favicon) |
 | `fonts/` | Cormorant Garamond and Spectral, self-hosted (SIL OFL licences included) |
+| `LICENSE.md` | The terms this project is shared under (see below) |
 
 ## Deploying
 
@@ -18,7 +29,7 @@ Upload the folder contents as-is to any static host that serves **HTTPS** (servi
 
 - **Netlify:** drag the unzipped folder onto app.netlify.com/drop.
 - **Cloudflare Pages:** Create project → Direct upload → select the folder.
-- **GitHub Pages:** push the files to a repo, then Settings → Pages → deploy from the main branch.
+- **GitHub Pages:** push the files to the repo root, then Settings → Pages → deploy from the `main` branch, root folder. For this repo the app will be at `https://keithintrinidad.github.io/Catholic-Prayers/`.
 - **Existing site:** copy into a subfolder, e.g. `/prayers/`.
 
 ## Installing on a phone
@@ -43,3 +54,9 @@ python3 -m http.server 8080
 ```
 
 then visit http://localhost:8080.
+
+## License & authorship
+
+This app is free to share and adapt, but never to sell, and any version made from it must stay free too. It is licensed under **CC BY-NC-SA 4.0**.
+
+It was built by Claude (Anthropic) using material provided by, and under the guidance of, **Keith Francis** (keithintrinidad). Any copy or derivative must keep that credit. The prayer texts themselves are traditional, and the fonts carry their own SIL Open Font License. Full terms are in `LICENSE.md`.
