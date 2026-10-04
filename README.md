@@ -16,7 +16,7 @@ It is a companion to the [Rosary Helper](https://github.com/keithintrinidad/Rosa
 
 | File | Purpose |
 |---|---|
-| `index.html` | The app (26 prayers, search, stars, text size, light/dark) |
+| `index.html` | The app (26 prayers, search, stars, text size, light/dark, About page with credits and licence) |
 | `manifest.webmanifest` | Name, colours and icons used when installed |
 | `sw.js` | Service worker: caches everything so the app works offline |
 | `icons/` | App icons (192, 512, maskable 512, Apple touch, favicon) |

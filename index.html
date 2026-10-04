@@ -107,6 +107,16 @@ h1{font-family:var(--display);font-weight:600;font-size:clamp(2.6rem,10vw,3.6rem
 .rnav{display:flex;gap:.75rem;padding:.75rem 1rem;padding-bottom:calc(.75rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--bg)}
 .rnav button{flex:1;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.7rem 1rem;font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rnav button:disabled{opacity:.4;cursor:default}
+.about h3{font-family:var(--display);font-weight:600;font-size:1.45rem;color:var(--marian);margin:2rem 0 .5rem}
+.about p{margin:0 0 1em}
+.about a{color:var(--marian);text-decoration-color:var(--gold);text-underline-offset:3px}
+.about .terms{list-style:none;padding:0;margin:0 0 1em}
+.about .terms li{padding:.55rem 0;border-bottom:1px solid var(--line)}
+.about .terms li:first-child{border-top:1px solid var(--line)}
+.about .terms b{color:var(--gold);font-weight:600}
+.about .small{font-size:.9em;color:var(--muted)}
+.about .seal{text-align:center;color:var(--muted);font-style:italic;margin-top:2.5rem;font-size:.95em}
+footer .link{color:var(--marian);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;font-style:italic}
 .fav.on svg{fill:var(--gold);stroke:var(--gold)}
 footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;font-style:italic}
 @media (prefers-reduced-motion: reduce){.reader{transition:none}}
@@ -126,13 +136,16 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;fon
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="Find a prayer or phrase" aria-label="Find a prayer or phrase" autocomplete="off">
     </label>
+    <button class="icon-btn" id="infoBtn" aria-label="About this app">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".6" fill="currentColor"/></svg>
+    </button>
     <button class="icon-btn" id="themeBtn" aria-label="Switch light or dark">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     </button>
   </div>
 
   <main id="index"></main>
-  <footer>Tap a prayer to open it. Tap the star to keep it at the top.</footer>
+  <footer>Tap a prayer to open it. Tap the star to keep it at the top.<br><button class="link" id="footInfo">About this app and its licence</button></footer>
 </div>
 
 <section class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="rtitle">
@@ -160,6 +173,43 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;fon
     <button id="prevBtn"></button>
     <button id="nextBtn"></button>
   </nav>
+</section>
+
+<section class="reader about" id="about" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+  <div class="rbar">
+    <button class="icon-btn" id="aboutClose" aria-label="Back to all prayers">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+  </div>
+  <div class="rbody" id="aboutBody">
+    <div class="wrap prayer">
+      <p class="rgroup">Prayers for Catholics</p>
+      <h2 class="rtitle" id="aboutTitle">About this app</h2>
+
+      <p>A companion for prayer based on the <i>Prayers for Catholics</i> leaflet of the Parish of the Assumption. It holds 26 prayers and, once installed, works without an internet connection.</p>
+
+      <h3>How it was made</h3>
+      <p>This app was built by <b>Claude</b>, an AI model created by <b>Anthropic</b>, using material provided to it and under the guidance of <b>Keith Francis</b> (GitHub: <a href="https://github.com/keithintrinidad" target="_blank" rel="noopener">keithintrinidad</a>).</p>
+      <p>The starting point was the parish leaflet, supplied by Keith Francis. All of its prayers are included, and eleven traditional prayers were added at his direction. He directed the app’s content, features and packaging through conversation with Claude, but did not write the code directly.</p>
+      <p>It is a companion to the <a href="https://github.com/keithintrinidad/Rosary-Helper" target="_blank" rel="noopener">Rosary Helper</a> app, made the same way.</p>
+
+      <h3>Licence</h3>
+      <p>This app, including its code, design and arrangement of content, is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence</a> (CC BY-NC-SA 4.0).</p>
+      <p>You are free to share it and to adapt it, on these terms:</p>
+      <ul class="terms">
+        <li><b>Attribution.</b> Give appropriate credit to Claude (Anthropic) as the builder and Keith Francis as the person who provided the material and directed its creation, link to the licence, and say if you made changes.</li>
+        <li><b>NonCommercial.</b> It may never be sold, or bundled into anything that is sold.</li>
+        <li><b>ShareAlike.</b> Any version built from it must be shared under this same licence, so every copy stays free.</li>
+      </ul>
+      <p class="small">This summary is not a substitute for the licence itself. The prayer texts are traditional and are not claimed as original work. The typefaces, Cormorant Garamond and Spectral, are used under the SIL Open Font License 1.1.</p>
+
+      <h3>Source code</h3>
+      <p>The full source, licence and README are at <a href="https://github.com/keithintrinidad/Catholic-Prayers" target="_blank" rel="noopener">github.com/keithintrinidad/Catholic-Prayers</a>.</p>
+
+      <p class="seal">© 2026 Keith Francis · CC BY-NC-SA 4.0</p>
+      <p class="amen" aria-hidden="true">✠</p>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -372,13 +422,34 @@ $("#themeBtn").onclick=()=>{
   const dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
   const t = dark?"light":"dark"; document.documentElement.dataset.theme=t; store.set("theme",t);
 };
+function openAbout(){
+  $("#about").classList.add("open");
+  document.body.style.overflow="hidden";
+  $("#aboutBody").scrollTop=0;
+  history.pushState({about:1},"","#about");
+  $("#aboutClose").focus({preventScroll:true});
+}
+function closeAbout(fromPop){
+  $("#about").classList.remove("open");
+  document.body.style.overflow="";
+  if(!fromPop && location.hash) history.back();
+  $("#infoBtn").focus({preventScroll:true});
+}
+$("#infoBtn").onclick=openAbout;
+$("#footInfo").onclick=openAbout;
+$("#aboutClose").onclick=()=>closeAbout(false);
+
 document.addEventListener("keydown",e=>{
+  if($("#about").classList.contains("open")){ if(e.key==="Escape") closeAbout(false); return; }
   if(!$("#reader").classList.contains("open")) return;
   if(e.key==="Escape") closeReader(false);
   if(e.key==="ArrowRight") $("#nextBtn").click();
   if(e.key==="ArrowLeft") $("#prevBtn").click();
 });
-window.addEventListener("popstate",()=>{ if($("#reader").classList.contains("open")) closeReader(true) });
+window.addEventListener("popstate",()=>{
+  if($("#about").classList.contains("open")) closeAbout(true);
+  else if($("#reader").classList.contains("open")) closeReader(true);
+});
 
 if("serviceWorker" in navigator){
   window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
@@ -387,6 +458,7 @@ if("serviceWorker" in navigator){
 renderIndex();
 const start = PRAYERS.findIndex(p=>"#"+p.id===location.hash);
 if(start>-1){history.replaceState(null,"",location.pathname);openPrayer(start)}
+else if(location.hash==="#about"){history.replaceState(null,"",location.pathname);openAbout()}
 </script>
 </body>
 </html>
