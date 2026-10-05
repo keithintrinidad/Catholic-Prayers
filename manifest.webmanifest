@@ -1,7 +1,7 @@
 {
   "name": "Prayers for Catholics",
   "short_name": "Prayers",
-  "description": "Everyday Catholic prayers from the Parish of the Assumption, available offline.",
+  "description": "Traditional Catholic prayers for everyday use, available offline.",
   "id": "./",
   "start_url": "./",
   "scope": "./",

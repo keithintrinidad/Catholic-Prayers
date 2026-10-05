@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Prayers for Catholics · Parish of the Assumption</title>
-<meta name="description" content="Everyday Catholic prayers from the Parish of the Assumption, available offline.">
+<title>Prayers for Catholics</title>
+<meta name="description" content="Traditional Catholic prayers for everyday use, available offline.">
 <meta name="theme-color" content="#23466F" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1826" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -126,7 +126,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;fon
 
 <div class="wrap">
   <header class="mast">
-    <p class="parish">Parish of the Assumption</p>
+    <p class="parish">A companion for everyday prayer</p>
     <h1>Prayers for Catholics</h1>
     <svg class="cross" viewBox="0 0 22 30" aria-hidden="true"><path d="M9 0h4v8h9v4h-9v18H9V12H0V8h9z" fill="currentColor"/></svg>
   </header>
@@ -186,11 +186,11 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;fon
       <p class="rgroup">Prayers for Catholics</p>
       <h2 class="rtitle" id="aboutTitle">About this app</h2>
 
-      <p>A companion for prayer based on the <i>Prayers for Catholics</i> leaflet of the Parish of the Assumption. It holds 26 prayers and, once installed, works without an internet connection.</p>
+      <p>A companion for everyday Catholic prayer. It holds <span id="prayerCount">a growing collection of</span> prayers and, once installed, works without an internet connection.</p>
 
       <h3>How it was made</h3>
       <p>This app was built by <b>Claude</b>, an AI model created by <b>Anthropic</b>, using material provided to it and under the guidance of <b>Keith Francis</b> (GitHub: <a href="https://github.com/keithintrinidad" target="_blank" rel="noopener">keithintrinidad</a>).</p>
-      <p>The starting point was the parish leaflet, supplied by Keith Francis. All of its prayers are included, and eleven traditional prayers were added at his direction. He directed the app’s content, features and packaging through conversation with Claude, but did not write the code directly.</p>
+      <p>The collection began with the <i>Prayers for Catholics</i> leaflet of the Parish of the Assumption, supplied by Keith Francis. All of its prayers are included, and further traditional prayers have been added at his direction, with more to come. He directed the app’s content, features and packaging through conversation with Claude, but did not write the code directly.</p>
       <p>It is a companion to <a href="https://keithintrinidad.github.io/rosary-helper/" target="_blank" rel="noopener">Rosary Helper</a> (<a href="https://github.com/keithintrinidad/Rosary-Helper" target="_blank" rel="noopener">repo</a>) and <a href="https://keithintrinidad.github.io/Bread-of-the-Presence/" target="_blank" rel="noopener">Bread of the Presence</a> (<a href="https://github.com/keithintrinidad/Bread-of-the-Presence" target="_blank" rel="noopener">repo</a>), made the same way.</p>
 
       <h3>Licence</h3>
@@ -213,7 +213,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;fon
 </section>
 
 <script>
-/* Content from "Prayers for Catholics" — Parish of the Assumption.
+/* Prayer texts. Add new prayers to this array; the index, search and About count update automatically.
    Markup: {Bow} = rubric, blocks: p (paragraph), lp (Let us pray), v/r (versicle/response), hm (Hail Mary expander) */
 const HAIL_MARY = "Hail Mary, full of grace, the Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.";
 
@@ -456,6 +456,7 @@ if("serviceWorker" in navigator){
 }
 
 renderIndex();
+$("#prayerCount").textContent = PRAYERS.length;
 const start = PRAYERS.findIndex(p=>"#"+p.id===location.hash);
 if(start>-1){history.replaceState(null,"",location.pathname);openPrayer(start)}
 else if(location.hash==="#about"){history.replaceState(null,"",location.pathname);openAbout()}

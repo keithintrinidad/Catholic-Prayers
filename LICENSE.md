@@ -32,7 +32,8 @@ This application was built by **Claude**, an AI model created by
 
 The source material was the *Prayers for Catholics* leaflet of the
 **Parish of the Assumption**, supplied by Keith Francis. Additional
-traditional prayers were included at his direction.
+traditional prayers have been added at his direction, and the collection
+continues to grow beyond the original leaflet.
 
 It is a companion to [Rosary Helper](https://keithintrinidad.github.io/rosary-helper/) ([repo](https://github.com/keithintrinidad/Rosary-Helper)) and
 [Bread of the Presence](https://keithintrinidad.github.io/Bread-of-the-Presence/) ([repo](https://github.com/keithintrinidad/Bread-of-the-Presence)), which were made the

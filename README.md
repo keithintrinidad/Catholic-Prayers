@@ -3,14 +3,14 @@
 **▶ Open the app:** [https://keithintrinidad.github.io/Catholic-Prayers/](https://keithintrinidad.github.io/Catholic-Prayers/)  
 Install it from your phone's browser menu to use it offline.
 
-A prayer companion based on the *Prayers for Catholics* leaflet of the Parish of the Assumption. It holds 26 prayers, works offline once installed, and runs entirely in the browser as static files: no build step, no server code.
+A companion for everyday Catholic prayer in English. It holds a growing collection of traditional prayers, works offline once installed, and runs entirely in the browser as static files: no build step, no server code.
 
 ## About this app
 
 This app was built by **Claude**, an AI model created by **Anthropic**, using material provided to it and under the guidance of **Keith Francis** ([keithintrinidad](https://github.com/keithintrinidad)).
 
-- **Source material.** The starting point was the parish's *Prayers for Catholics* leaflet, supplied by Keith Francis. All 15 of its prayers are included, with small corrections, and the Angelus has its standard closing versicle restored.
-- **Additions.** Eleven traditional prayers were added at his direction: the Morning Offering, Guardian Angel Prayer, Acts of Faith, Hope and Love, Regina Caeli, Fatima Prayer, Prayer to St. Michael, Graces before and after Meals, Eternal Rest, and the Act of Spiritual Communion.
+- **Source material.** The starting point was the *Prayers for Catholics* leaflet of the **Parish of the Assumption**, supplied by Keith Francis. All 15 of its prayers are included, with small corrections, and the Angelus has its standard closing versicle restored.
+- **Additions.** Eleven traditional prayers have since been added at his direction, and the collection will continue to grow beyond the original leaflet: the Morning Offering, Guardian Angel Prayer, Acts of Faith, Hope and Love, Regina Caeli, Fatima Prayer, Prayer to St. Michael, Graces before and after Meals, Eternal Rest, and the Act of Spiritual Communion.
 - **Design and build.** Keith Francis directed the app's content, features, and packaging through conversation with Claude, but did not write the code directly.
 
 It is a companion to [Rosary Helper](https://keithintrinidad.github.io/rosary-helper/) ([repo](https://github.com/keithintrinidad/Rosary-Helper)) and [Bread of the Presence](https://keithintrinidad.github.io/Bread-of-the-Presence/) ([repo](https://github.com/keithintrinidad/Bread-of-the-Presence)), made the same way.
@@ -19,7 +19,7 @@ It is a companion to [Rosary Helper](https://keithintrinidad.github.io/rosary-he
 
 | File | Purpose |
 |---|---|
-| `index.html` | The app (26 prayers, search, stars, text size, light/dark, About page with credits and licence) |
+| `index.html` | The app (prayers, search, stars, text size, light/dark, About page with credits and licence) |
 | `manifest.webmanifest` | Name, colours and icons used when installed |
 | `sw.js` | Service worker: caches everything so the app works offline |
 | `icons/` | App icons (192, 512, maskable 512, Apple touch, favicon) |
