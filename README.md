@@ -1,5 +1,8 @@
 # Prayers for Catholics – PWA
 
+**▶ Open the app:** [https://keithintrinidad.github.io/Catholic-Prayers/](https://keithintrinidad.github.io/Catholic-Prayers/)  
+Install it from your phone's browser menu to use it offline.
+
 A prayer companion based on the *Prayers for Catholics* leaflet of the Parish of the Assumption. It holds 26 prayers, works offline once installed, and runs entirely in the browser as static files: no build step, no server code.
 
 ## About this app
@@ -10,7 +13,7 @@ This app was built by **Claude**, an AI model created by **Anthropic**, using ma
 - **Additions.** Eleven traditional prayers were added at his direction: the Morning Offering, Guardian Angel Prayer, Acts of Faith, Hope and Love, Regina Caeli, Fatima Prayer, Prayer to St. Michael, Graces before and after Meals, Eternal Rest, and the Act of Spiritual Communion.
 - **Design and build.** Keith Francis directed the app's content, features, and packaging through conversation with Claude, but did not write the code directly.
 
-It is a companion to the [Rosary Helper](https://github.com/keithintrinidad/Rosary-Helper) app, made the same way.
+It is a companion to [Rosary Helper](https://keithintrinidad.github.io/rosary-helper/) ([repo](https://github.com/keithintrinidad/Rosary-Helper)) and [Bread of the Presence](https://keithintrinidad.github.io/Bread-of-the-Presence/) ([repo](https://github.com/keithintrinidad/Bread-of-the-Presence)), made the same way.
 
 ## What's in the package
 
@@ -29,7 +32,7 @@ Upload the folder contents as-is to any static host that serves **HTTPS** (servi
 
 - **Netlify:** drag the unzipped folder onto app.netlify.com/drop.
 - **Cloudflare Pages:** Create project → Direct upload → select the folder.
-- **GitHub Pages:** push the files to the repo root, then Settings → Pages → deploy from the `main` branch, root folder. For this repo the app will be at `https://keithintrinidad.github.io/Catholic-Prayers/`.
+- **GitHub Pages:** push the files to the repo root, then Settings → Pages → deploy from the `main` branch, root folder. For this repo the app is at [https://keithintrinidad.github.io/Catholic-Prayers/](https://keithintrinidad.github.io/Catholic-Prayers/).
 - **Existing site:** copy into a subfolder, e.g. `/prayers/`.
 
 ## Installing on a phone
@@ -57,6 +60,6 @@ then visit http://localhost:8080.
 
 ## License & authorship
 
-This app is free to share and adapt, but never to sell, and any version made from it must stay free too. It is licensed under **CC BY-NC-SA 4.0**.
+[Prayers for Catholics](https://keithintrinidad.github.io/Catholic-Prayers/) ([repo](https://github.com/keithintrinidad/Catholic-Prayers)) is free to share and adapt, but never to sell, and any version made from it must stay free too. It is licensed under **CC BY-NC-SA 4.0**.
 
 It was built by Claude (Anthropic) using material provided by, and under the guidance of, **Keith Francis** (keithintrinidad). Any copy or derivative must keep that credit. The prayer texts themselves are traditional, and the fonts carry their own SIL Open Font License. Full terms are in `LICENSE.md`.

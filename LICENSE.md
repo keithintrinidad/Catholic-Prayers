@@ -1,6 +1,6 @@
 # License
 
-**Prayers for Catholics**, including its code, design, and app content, is
+**Prayers for Catholics** ([app](https://keithintrinidad.github.io/Catholic-Prayers/) · [repo](https://github.com/keithintrinidad/Catholic-Prayers)), including its code, design, and app content, is
 licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike
 4.0 International License (CC BY-NC-SA 4.0)**.
 
@@ -32,7 +32,11 @@ This application was built by **Claude**, an AI model created by
 
 The source material was the *Prayers for Catholics* leaflet of the
 **Parish of the Assumption**, supplied by Keith Francis. Additional
-traditional prayers were included at his direction. Keith Francis directed
+traditional prayers were included at his direction.
+
+It is a companion to [Rosary Helper](https://keithintrinidad.github.io/rosary-helper/) ([repo](https://github.com/keithintrinidad/Rosary-Helper)) and
+[Bread of the Presence](https://keithintrinidad.github.io/Bread-of-the-Presence/) ([repo](https://github.com/keithintrinidad/Bread-of-the-Presence)), which were made the
+same way and are shared under the same terms. Keith Francis directed
 the app's design, content, and features through conversation with Claude,
 but did not write the code directly.
 
