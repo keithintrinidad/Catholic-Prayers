@@ -1,6 +1,6 @@
 /* Prayers for Catholics – service worker.
    Bump VERSION whenever any file changes so installed copies update. */
-const VERSION = "pfc-v6";
+const VERSION = "pfc-v3.1";
 const ASSETS = [
   "./",
   "index.html",
