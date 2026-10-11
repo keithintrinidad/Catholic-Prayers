@@ -2,7 +2,7 @@
   "name": "Prayers for Catholics",
   "short_name": "Prayers",
   "description": "Traditional Catholic prayers for everyday use, available offline.",
-  "id": "./",
+  "id": "catholic-prayers",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
