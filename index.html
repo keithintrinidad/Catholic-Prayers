@@ -206,6 +206,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;fon
       <h3>Source code</h3>
       <p>The full source, licence and README are at <a href="https://github.com/keithintrinidad/Catholic-Prayers" target="_blank" rel="noopener">github.com/keithintrinidad/Catholic-Prayers</a>. The app itself is at <a href="https://keithintrinidad.github.io/Catholic-Prayers/" target="_blank" rel="noopener">keithintrinidad.github.io/Catholic-Prayers</a>.</p>
 
+      <p class="small" id="swVersion" style="text-align:center">Offline copy: checking…</p>
       <p class="seal">© 2026 Keith Francis · CC BY-NC-SA 4.0</p>
       <p class="amen" aria-hidden="true">✠</p>
     </div>
@@ -423,6 +424,10 @@ $("#themeBtn").onclick=()=>{
   const t = dark?"light":"dark"; document.documentElement.dataset.theme=t; store.set("theme",t);
 };
 function openAbout(){
+  const sv=$("#swVersion");
+  if(!("serviceWorker" in navigator)) sv.textContent="Offline copy: not supported in this browser";
+  else if(!navigator.serviceWorker.controller) sv.textContent="Offline copy: not active yet. Open the app again while online.";
+  else { sv.textContent="Offline copy: checking…"; navigator.serviceWorker.controller.postMessage("version"); }
   $("#about").classList.add("open");
   document.body.style.overflow="hidden";
   $("#aboutBody").scrollTop=0;
@@ -453,6 +458,9 @@ window.addEventListener("popstate",()=>{
 
 if("serviceWorker" in navigator){
   window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+  navigator.serviceWorker.addEventListener("message",e=>{
+    if(e.data && e.data.version) $("#swVersion").textContent="Offline copy: "+e.data.version+" (ready)";
+  });
 }
 
 renderIndex();
