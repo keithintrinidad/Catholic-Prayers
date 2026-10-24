@@ -1,6 +1,9 @@
 /* Prayers for Catholics – service worker.
    Change VERSION whenever any file changes so installed copies update. */
-const VERSION = "pfc-v3.3";
+const VERSION = "pfc-v3.4";
+// All the apps share one origin (keithintrinidad.github.io) and so one pool of caches:
+// only ever remove this app's own old caches, never another app's.
+const CACHE_PREFIX = "pfc-";
 
 // The app cannot open offline without these, so installation waits for them.
 const CORE = ["./", "index.html"];
@@ -32,7 +35,7 @@ self.addEventListener("install", e => {
     const cache = await caches.open(VERSION);
     // Copy files the previous version already saved, so an update on a weak
     // connection only has to download what actually changed.
-    const old = (await caches.keys()).filter(k => k !== VERSION);
+    const old = (await caches.keys()).filter(k => k.startsWith(CACHE_PREFIX) && k !== VERSION);
     for (const key of old) {
       const oldCache = await caches.open(key);
       for (const path of EXTRAS) {
@@ -52,7 +55,7 @@ self.addEventListener("install", e => {
 self.addEventListener("activate", e => {
   e.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)));
+    await Promise.all(keys.filter(k => k.startsWith(CACHE_PREFIX) && k !== VERSION).map(k => caches.delete(k)));
     await self.clients.claim();
   })());
 });
